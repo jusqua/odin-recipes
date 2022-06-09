@@ -20,6 +20,7 @@
 }
 
 .content {
+  position: relative;
   padding: 2mm;
   background-color: white;
   color: black;
@@ -41,21 +42,13 @@ li.link-item a {
   pointer-events: auto;
 }
 
+li.link-item a:hover {
+  pointer-events: auto;
+  text-decoration: underline;
+}
+
 li.link-item:hover {
   list-style-type: '\1f449';
-}
-
-a {
-  color: black;
-  outline: none;
-  text-decoration: none;
-  font-weight: bold;
-  padding: 2px 1px 0;
-  margin: auto;
-}
-
-a:hover {
-  text-decoration: underline;
 }
 
 .info {
@@ -79,4 +72,40 @@ a:hover {
   text-align: center;
 }
 
+footer {
+  position: absolute;
+  bottom: .5rem;
+  left: 0;
+  width: 100%;
+  --color: black;
+  text-align: center;
+}
+
+a {
+  color: var(--color);
+  text-decoration: none;
+  margin: 0 .2rem;
+  position: relative;
+  outline: none;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 2px 1px 0;
+  margin: auto;
+}
+
+a::after {
+  content: '';
+  position: absolute;
+  bottom: -.1rem;
+  left: 0;
+  border-bottom: 1px solid var(--color);
+  width: 100%;
+  transition: .2s width;
+  pointer-events: none;
+}
+
+a:hover::after,
+a:focus::after {
+  width: 0;
+}
 
